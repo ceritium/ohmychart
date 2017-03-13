@@ -1,0 +1,22 @@
+{
+  "name": "ohmychart",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Jose Galisteo <ceritium@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ceritium/ohmychart",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

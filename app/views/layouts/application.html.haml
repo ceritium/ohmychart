@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %title Admin
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+  %body
+    %nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: root_path} Admin
+        #navbar.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{href: '#'} Foo
+            %li
+              %a{href: '#'} Bar
+    .container
+      = yield
+    = javascript_include_tag 'application'
+    = javascript_pack_tag 'application'
