@@ -25,7 +25,7 @@ export default class ChartLoad extends React.Component {
 
   render(){
     return <div>
-      <ChartRender columns={this.state.columns} data={this.state.data}/>
+      <ChartRender columns={this.state.columns} data={this.state.data} kind={this.props.kind}/>
     </div>
   }
 }

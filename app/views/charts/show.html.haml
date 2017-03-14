@@ -2,5 +2,5 @@
   #chart{
     height: 100%;
   }
-= react_component('ChartLoad', source: params[:source])
+= react_component('ChartLoad', request.query_parameters)
 = javascript_pack_tag 'chart'

@@ -16,11 +16,13 @@ class QueryEditor extends React.Component {
       statement: this.props.statement,
       pendingPreview: true,
       columns: [],
-      data: []
+      data: [],
+      chartKind: this.props.chart_kind
     }
 
     this.handleChangeStatement = this.handleChangeStatement.bind(this)
     this.handleChangeSample = this.handleChangeSample.bind(this)
+    this.handleChangeChartKind = this.handleChangeChartKind.bind(this)
 
     setInterval(this.fetchPreview.bind(this), 1000);
   }
@@ -31,6 +33,10 @@ class QueryEditor extends React.Component {
 
   handleChangeSample(e){
     this.setState({sample: e.target.value, pendingPreview: true})
+  }
+
+  handleChangeChartKind(e){
+    this.setState({chartKind: e.target.value})
   }
 
   fetchPreview(){
@@ -113,7 +119,15 @@ class QueryEditor extends React.Component {
           </pre>)
         }
         <br/>
-        <ChartRender columns={this.state.columns} data={this.state.data} height='400px'/>
+
+        <select name='query[chart_kind]' className='form-control' value={this.state.chartKind} onChange={this.handleChangeChartKind}>
+          <option value='Line'> Line </option>
+          <option value='Column'> Column </option>
+          <option value='Area'> Area </option>
+        </select>
+
+
+        <ChartRender columns={this.state.columns} data={this.state.data} kind={this.state.chartKind} height='400px'/>
       </div>;
   }
 }

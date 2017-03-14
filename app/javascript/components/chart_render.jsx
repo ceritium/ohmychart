@@ -1,7 +1,7 @@
 import React from 'react'
 import Chart from 'chart.js'
 
-import {ColumnChart} from 'react-chartkick'
+import {ColumnChart, LineChart, AreaChart} from 'react-chartkick'
 
 export default class ChartRender extends React.Component {
 
@@ -20,8 +20,20 @@ export default class ChartRender extends React.Component {
   }
 
   render(){
+    let chartKind;
+    switch(this.props.kind){
+      case 'Area':
+        chartKind = <AreaChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
+        break;
+      case 'Column':
+        chartKind = <ColumnChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
+        break;
+      default:
+        chartKind = <LineChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
+    }
+
     return <div>
-      <ColumnChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
+      {chartKind}
       </div>;
 
   }

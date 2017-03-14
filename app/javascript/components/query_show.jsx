@@ -18,7 +18,7 @@ class QueryShow extends React.Component {
     const iframeWidth = '100%'
     const iframeHeight = '200px'
     const jsonURL = `${this.props.api_query_url}?${this.state.sample}`
-    const chartURL = `${this.props.charts_url}?source=${encodeURIComponent(jsonURL)}`
+    const chartURL = `${this.props.charts_url}?source=${encodeURIComponent(jsonURL)}&kind=${this.props.chart_kind}`
     const iframeCode = `<iframe src='${chartURL}' width='${iframeWidth}' height='${iframeHeight}' border='none'></iframe>`
     return <div>
       <h1> Query: { this.props.name } </h1>
