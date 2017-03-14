@@ -4,7 +4,6 @@ import Chart from 'chart.js'
 import {ColumnChart, LineChart, AreaChart} from 'react-chartkick'
 
 export default class ChartRender extends React.Component {
-
   chartData(){
     const responseColumns = this.props.columns;
     const responseData = this.props.data;
@@ -19,23 +18,20 @@ export default class ChartRender extends React.Component {
     }
   }
 
+  capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  }
+
   render(){
-    let chartKind;
-    switch(this.props.kind){
-      case 'Area':
-        chartKind = <AreaChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
-        break;
-      case 'Column':
-        chartKind = <ColumnChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
-        break;
-      default:
-        chartKind = <LineChart data={this.chartData()} id='chart' height={this.props.height || '100%'} download={true}/>
+    const chartKinds = {
+      column: ColumnChart,
+      line: LineChart,
+      area: AreaChart
     }
 
-    return <div>
-      {chartKind}
-      </div>;
+    const kind = (this.props.kind || 'column').toLowerCase()
 
+    return React.createElement(chartKinds[kind]||ColumnChart, {data: this.chartData(), height: (this.props.height || '100%'), download: true})
   }
 
 }

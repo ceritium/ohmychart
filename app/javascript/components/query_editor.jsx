@@ -121,9 +121,9 @@ class QueryEditor extends React.Component {
         <br/>
 
         <select name='query[chart_kind]' className='form-control' value={this.state.chartKind} onChange={this.handleChangeChartKind}>
-          <option value='Line'> Line </option>
-          <option value='Column'> Column </option>
-          <option value='Area'> Area </option>
+          <option value='line'> Line </option>
+          <option value='column'> Column </option>
+          <option value='area'> Area </option>
         </select>
 
 
