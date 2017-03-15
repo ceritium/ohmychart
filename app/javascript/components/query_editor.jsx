@@ -29,7 +29,7 @@ class QueryEditor extends React.Component {
 
   componentDidMount(){
     setInterval(this.fetchPreview.bind(this), 1000);
-    window.onbeforeunload = this.askClose.bind(this);
+    // window.onbeforeunload = this.askClose.bind(this);
     }
 
   askClose(){
