@@ -7,8 +7,6 @@ export default class ChartLoad extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      columns: [],
-      data: []
     }
   }
 
@@ -25,7 +23,9 @@ export default class ChartLoad extends React.Component {
 
   render(){
     return <div>
+    { this.state.data &&
       <ChartRender columns={this.state.columns} data={this.state.data} kind={this.props.kind}/>
+    }
     </div>
   }
 }

@@ -13,8 +13,8 @@ class QueryEditor extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      sample: this.props.sample,
-      statement: this.props.statement,
+      sample: this.props.sample || '',
+      statement: this.props.statement || '',
       pendingPreview: true,
       columns: [],
       data: [],
