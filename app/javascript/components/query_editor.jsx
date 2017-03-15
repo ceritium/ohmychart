@@ -17,26 +17,37 @@ class QueryEditor extends React.Component {
       pendingPreview: true,
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind || 'column'
+      chartKind: this.props.chart_kind || 'column',
+      pendingSave: false
     }
 
     this.handleChangeStatement = this.handleChangeStatement.bind(this)
     this.handleChangeSample = this.handleChangeSample.bind(this)
     this.handleChangeChartKind = this.handleChangeChartKind.bind(this)
 
+  }
+
+  componentDidMount(){
     setInterval(this.fetchPreview.bind(this), 1000);
+    window.onbeforeunload = this.askClose.bind(this);
+    }
+
+  askClose(){
+    if(this.state.pendingSave){
+      return "You have attempted to leave this page. Are you sure?";
+    }
   }
 
   handleChangeStatement(statement){
-    this.setState({statement: statement, pendingPreview: true})
+    this.setState({statement: statement, pendingPreview: true, pendingSave: true})
   }
 
   handleChangeSample(e){
-    this.setState({sample: e.target.value, pendingPreview: true})
+    this.setState({sample: e.target.value, pendingPreview: true, pendingSave: true})
   }
 
   handleChangeChartKind(e){
-    this.setState({chartKind: e.target.value})
+    this.setState({chartKind: e.target.value, pendingSave: true})
   }
 
   fetchPreview(){
