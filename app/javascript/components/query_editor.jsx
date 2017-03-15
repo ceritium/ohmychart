@@ -17,7 +17,7 @@ class QueryEditor extends React.Component {
       pendingPreview: true,
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind
+      chartKind: this.props.chart_kind || 'column'
     }
 
     this.handleChangeStatement = this.handleChangeStatement.bind(this)
@@ -125,8 +125,6 @@ class QueryEditor extends React.Component {
           <option value='column'> Column </option>
           <option value='area'> Area </option>
         </select>
-
-
         <ChartRender columns={this.state.columns} data={this.state.data} kind={this.state.chartKind} height='400px'/>
       </div>;
   }
