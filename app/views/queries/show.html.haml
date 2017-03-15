@@ -1,1 +1,4 @@
+.pull-right
+  = link_to 'edit', edit_query_path(@query), class: 'btn btn-success'
+
 = react_component('QueryShow', query_react_props(@query))

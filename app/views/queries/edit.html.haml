@@ -1,7 +1,14 @@
+.pull-right
+  = link_to 'show & share', query_path(@query), class: 'btn btn-success'
+
 %h1 Edit query
 
 = simple_form_for @query do |f|
+  .pull-right
+    = f.submit 'save', class: 'btn btn-info'
+  %br
   = f.input :name
   = react_component('QueryEditor', query_react_props(@query))
 
-  = f.submit 'save', class: 'btn'
+  .pull-right
+    = f.submit 'save', class: 'btn btn-info'

@@ -7,6 +7,7 @@ import 'brace/snippets/text'
 import 'brace/ext/language_tools'
 import AceEditor from 'react-ace'
 import ChartRender from 'components/chart_render'
+import ChartKindSelect from 'components/chart_kind_select';
 
 class QueryEditor extends React.Component {
   constructor(props){
@@ -24,7 +25,6 @@ class QueryEditor extends React.Component {
     this.handleChangeStatement = this.handleChangeStatement.bind(this)
     this.handleChangeSample = this.handleChangeSample.bind(this)
     this.handleChangeChartKind = this.handleChangeChartKind.bind(this)
-
   }
 
   componentDidMount(){
@@ -130,12 +130,7 @@ class QueryEditor extends React.Component {
           </pre>)
         }
         <br/>
-
-        <select name='query[chart_kind]' className='form-control' value={this.state.chartKind} onChange={this.handleChangeChartKind}>
-          <option value='line'> Line </option>
-          <option value='column'> Column </option>
-          <option value='area'> Area </option>
-        </select>
+        <ChartKindSelect chartKind={this.state.chartKind} onChange={this.handleChangeChartKind}/>
         <ChartRender columns={this.state.columns} data={this.state.data} kind={this.state.chartKind} height='400px'/>
       </div>;
   }
