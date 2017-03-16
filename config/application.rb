@@ -35,5 +35,16 @@ module Ohmychart
         resource '/api/*', :headers => :any, :methods => [:get, :options]
       end
     end
+
+    # Max number of rows to return, is set the query is wrapped with:
+    # `select * from ($query) limit $query_limit`
+    config.query_limit = ENV['QUERY_LIMIT']
+
+    # Database source url, it is strongly recommend use a read-only user.
+    #
+    # Supported mysql2 and postgres connectors by default.
+    # For any other connector supported by sequel probably you will have to modify the Gemfile
+    # https://sequel.jeremyevans.net/rdoc/files/doc/opening_databases_rdoc.html
+    config.source_db = ENV['SOURCE_DB']
   end
 end
