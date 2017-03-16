@@ -4,7 +4,7 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
-    %title Admin
+    %title ohMyChart
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
   %body
@@ -16,7 +16,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand{href: root_path} Admin
+          %a.navbar-brand{href: root_path} ohMyChart
     .container
       = yield
     = javascript_include_tag 'application'
