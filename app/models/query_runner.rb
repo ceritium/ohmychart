@@ -8,13 +8,16 @@ module QueryRunner
     options ||= {}
     template = Liquid::Template.parse(statement)
     sql = template.render(options.select{|k,v| v.present?})
-    fetch = SOURCE.fetch(sql)
+    SOURCE.transaction(rollback: :always) do
 
-    if limit = Rails.configuration.query_limit
-      fetch = fetch.limit(limit)
+      fetch = SOURCE.fetch(sql)
+
+      if limit = Rails.configuration.query_limit
+        fetch = fetch.limit(limit)
+      end
+
+      {data: fetch.all, columns: fetch.columns, sql: sql, explain: fetch.explain}
     end
-
-    {data: fetch.all, columns: fetch.columns, sql: sql, explain: fetch.explain}
   rescue Sequel::DatabaseError => e
     {error: e.message, sql: sql}
   end
