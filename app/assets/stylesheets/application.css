@@ -14,3 +14,17 @@
  *= require_tree .
  *= require_self
  */
+
+.metadata-tables {
+  padding: 0px 10px;
+  list-style: none;
+}
+
+.metadata-tables .table-name {
+  font-weight: bold;
+}
+
+.metadata-tables .table-columns {
+  padding: 0px 20px;
+  list-style-type: disc;
+}

@@ -7,8 +7,23 @@
   .pull-right
     = f.submit 'save', class: 'btn btn-info'
   %br
-  = f.input :name
-  = react_component('QueryEditor', query_react_props(@query))
+  %br
+  .row
+    .col-md-9
+      = f.input :name
+      = react_component('QueryEditor', query_react_props(@query))
+    .col-md-3
+      .panel.panel-default
+        .panel-heading
+          DB metadata
+        .panel-body
+          %ul.metadata-tables
+            - QueryRunner.tables.sort.each do |table|
+              %li.metadata-table
+                .table-name= table
+                %ul.table-columns
+                  - QueryRunner.columns_table(table).each do |column|
+                    %li= column
 
   .pull-right
     = f.submit 'save', class: 'btn btn-info'

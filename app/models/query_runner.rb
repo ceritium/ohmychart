@@ -4,6 +4,14 @@ module QueryRunner
 
   extend self
 
+  def tables
+    SOURCE.tables
+  end
+
+  def columns_table(table)
+    SOURCE[table].columns
+  end
+
   def execute(statement, options = {})
     options ||= {}
     template = Liquid::Template.parse(statement)
