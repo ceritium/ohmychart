@@ -1,18 +1,23 @@
 import React from 'react'
 
-import TableRender from 'components/table_render'
-import ChartRender from 'components/chart_render'
+import TableRender from './table_render'
+import ChartRender from './chart_render'
 
 export default class DataRender extends React.Component {
 
-  render(){
-    const component = () => { if (this.props.kind == 'table'){
-        return TableRender
-      } else {
-        return ChartRender
-      }
+  component() {
+    if (this.props.kind === 'table') {
+      return TableRender
     }
-
-    return React.createElement(component(), this.props)
+    return ChartRender
   }
+
+  render() {
+    return React.createElement(this.component(), this.props)
+  }
+}
+
+
+DataRender.propTypes = {
+  kind: React.PropTypes.string.isRequired,
 }

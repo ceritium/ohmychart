@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "compat"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "semi": [2, "never"],
+    "no-unexpected-multiline": 2,
+    "compat/compat": 2
+  }
+}

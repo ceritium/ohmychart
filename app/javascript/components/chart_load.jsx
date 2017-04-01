@@ -1,31 +1,37 @@
 import React from 'react'
 import $ from 'jquery'
-import DataRender from 'components/data_render'
+import DataRender from './data_render'
 
 export default class ChartLoad extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     $.ajax({
       url: this.props.source,
       success: this.onGetData.bind(this)
     })
   }
 
-  onGetData(response){
-    this.setState({columns: response.columns, data: response.data})
+  onGetData(response) {
+    this.setState({ columns: response.columns, data: response.data })
   }
 
-  render(){
-    return <div>
-    { this.state.data &&
-      <DataRender columns={this.state.columns} data={this.state.data} kind={this.props.kind}/>
-    }
-    </div>
+  render() {
+    return (
+      <div>
+        { this.state.data &&
+          <DataRender columns={this.state.columns} data={this.state.data} kind={this.props.kind} />
+        }
+      </div>)
   }
+}
+
+ChartLoad.propTypes = {
+  kind: React.PropTypes.string.isRequired,
+  source: React.PropTypes.string.isRequired
 }

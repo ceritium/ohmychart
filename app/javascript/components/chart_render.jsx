@@ -1,40 +1,35 @@
 import React from 'react'
-import Chart from 'chart.js'
-import {ColumnChart, LineChart, AreaChart, PieChart, BarChart, ScatterChart} from 'react-chartkick'
-
-import TableRender from 'components/table_render'
+import 'chart.js'
+import { ColumnChart, LineChart, AreaChart, PieChart, BarChart, ScatterChart } from 'react-chartkick'
 
 export default class ChartRender extends React.Component {
-  chartData(){
-    const responseColumns = this.props.columns;
-    const responseData = this.props.data;
+  chartData() {
+    const responseColumns = this.props.columns
+    const responseData = this.props.data
 
-    if(this.props.kind == 'pie'){
-      if (responseData){
-        return responseData.map(data => {
-          return [data[responseColumns[0]], data[responseColumns[1]]]
-        });
-      } else {
-        return [];
+    if (this.props.kind === 'pie') {
+      if (responseData) {
+        return responseData.map(data => (
+          [data[responseColumns[0]], data[responseColumns[1]]]
+        ))
       }
+      return []
     }
 
-    if (responseColumns && responseData){
-      return responseColumns.slice(1).map(x => {
-        return {name: x, data: responseData.map(data => {
-          return [data[responseColumns[0]], data[x]];
-        })}
-      })
-    } else {
-      return [];
+    if (responseColumns && responseData) {
+      return responseColumns.slice(1).map(x => (
+        {
+          name: x,
+          data: responseData.map(data => (
+            [data[responseColumns[0]], data[x]]
+          ))
+        }
+      ))
     }
+    return []
   }
 
-  capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-  }
-
-  render(){
+  render() {
     const chartKinds = {
       column: ColumnChart,
       line: LineChart,
@@ -44,8 +39,21 @@ export default class ChartRender extends React.Component {
       pie: PieChart
     }
 
-    const kind = (this.props.kind || 'column').toLowerCase()
-    return React.createElement(chartKinds[kind]||ColumnChart, {data: this.chartData(), height: (this.props.height || '100%'), download: true})
+    const kind = this.props.kind.toLowerCase()
+    return React.createElement(chartKinds[kind] || ColumnChart, {
+      data: this.chartData(), height: this.props.height
+    })
   }
+}
 
+ChartRender.propTypes = {
+  data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+  columns: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  kind: React.PropTypes.string,
+  height: React.PropTypes.string
+}
+
+ChartRender.defaultProps = {
+  height: '100%',
+  kind: 'column',
 }

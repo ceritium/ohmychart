@@ -1,16 +1,18 @@
 import React from 'react'
-import ace from 'brace'
+import 'brace'
 import 'brace/theme/twilight'
 import 'brace/mode/sql'
 import 'brace/snippets/sql'
 import 'brace/snippets/text'
 import 'brace/ext/language_tools'
 import AceEditor from 'react-ace'
-import DataRender from 'components/data_render'
-import ChartKindSelect from 'components/chart_kind_select'
+import $ from 'jquery'
 
-class QueryEditor extends React.Component {
-  constructor(props){
+import DataRender from './data_render'
+import ChartKindSelect from './chart_kind_select'
+
+export default class QueryEditor extends React.Component {
+  constructor(props) {
     super(props)
     this.state = {
       sample: this.props.sample || '',
@@ -18,7 +20,7 @@ class QueryEditor extends React.Component {
       pendingPreview: true,
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind || 'table',
+      chartKind: this.props.chart_kind,
       pendingSave: false
     }
 
@@ -27,60 +29,65 @@ class QueryEditor extends React.Component {
     this.handleChangeChartKind = this.handleChangeChartKind.bind(this)
   }
 
-  componentDidMount(){
-    setInterval(this.fetchPreview.bind(this), 1000);
-    // window.onbeforeunload = this.askClose.bind(this);
-    }
-
-  askClose(){
-    if(this.state.pendingSave){
-      return "You have attempted to leave this page. Are you sure?";
-    }
+  componentDidMount() {
+    setInterval(this.fetchPreview.bind(this), 1000)
+    // window.onbeforeunload = this.askClose.bind(this)
   }
 
-  handleChangeStatement(statement){
-    this.setState({statement: statement, pendingPreview: true, pendingSave: true})
+  onFetchSuccess(response) {
+    this.setState({
+      data: response.data,
+      columns: response.columns,
+      sql: response.sql,
+      explain: response.explain,
+      error: response.error
+    })
   }
 
-  handleChangeSample(e){
-    this.setState({sample: e.target.value, pendingPreview: true, pendingSave: true})
-  }
+  fetchPreview() {
+    if (this.state.pendingPreview) {
+      this.state.pendingPreview = false
 
-  handleChangeChartKind(e){
-    this.setState({chartKind: e.target.value, pendingSave: true})
-  }
-
-  fetchPreview(){
-    if (this.state.pendingPreview){
-      this.state.pendingPreview = false;
-
-      let options = {}
-
-      let sample = this.state.sample
-      sample.split("&").forEach(pair => {
-        let keyValue = pair.split('=')
-          options[keyValue[0]] = keyValue[1]
+      const sample = {}
+      this.state.sample.split('&').forEach((pair) => {
+        const keyValue = pair.split('=')
+        sample[keyValue[0]] = keyValue[1]
       })
 
       $.ajax({
-          url: '/queries/preview',
-          method: 'POST',
-          data: {
-            statement: this.state.statement,
-            options: options
-          },
-          success: this.onFetchSuccess.bind(this)
+        url: '/queries/preview',
+        method: 'POST',
+        data: {
+          statement: this.state.statement,
+          sample
+        },
+        success: this.onFetchSuccess.bind(this)
       })
     }
   }
 
-  onFetchSuccess(response){
-    this.setState({data: response.data, columns: response.columns, sql: response.sql, explain: response.explain, error: response.error})
+  handleChangeChartKind(e) {
+    this.setState({ chartKind: e.target.value, pendingSave: true })
   }
 
-  render(){
-    return <div>
-      <input name="query[statement]" type="hidden" value={this.state.statement}/>
+  handleChangeSample(e) {
+    this.setState({ sample: e.target.value, pendingPreview: true, pendingSave: true })
+  }
+
+  handleChangeStatement(statement) {
+    this.setState({ statement, pendingPreview: true, pendingSave: true })
+  }
+
+  askClose() {
+    if (this.state.pendingSave) {
+      return 'You have attempted to leave this page. Are you sure?'
+    }
+    return false
+  }
+
+  render() {
+    return (<div>
+      <input name="query[statement]" type="hidden" value={this.state.statement} />
 
       <div>
         <AceEditor
@@ -89,52 +96,72 @@ class QueryEditor extends React.Component {
           theme="twilight"
           onChange={this.handleChangeStatement}
           value={this.state.statement}
-          editorProps={{$blockScrolling: Infinity}}
+          editorProps={{ $blockScrolling: Infinity }}
           onLoad={(editor) => {
-            editor.getSession().setUseWrapMode(true);
+            editor.getSession().setUseWrapMode(true)
           }}
           width="100%"
           height="200px"
           showGutter={false}
           showPrintMargin={false}
           tabSize={2}
-          enableBasicAutocompletion={true}
-          enableSnippets={true}
-          enableLiveAutocompletion={true}
-          highlightActiveLine={true}
+          enableBasicAutocompletion
+          enableSnippets
+          enableLiveAutocompletion
+          highlightActiveLine
           fontSize={12}
           minLines={10}
-          />
-        </div>
+        />
+      </div>
 
-        <label>
-          Sample
-        </label>
-        <input name="query[sample]" type="text" className="form-control" autoComplete="off"
-          value={this.state.sample} onChange={this.handleChangeSample}/>
+      <strong>
+        Sample
+      </strong>
+      <input
+        name="query[sample]"
+        type="text"
+        className="form-control"
+        autoComplete="off"
+        value={this.state.sample}
+        onChange={this.handleChangeSample}
+      />
+      <br />
+      <div className="alert alert-info">
+        { this.state.sql }
+      </div>
 
-        <br/>
-        <div className='alert alert-info'>
-          { this.state.sql }
-        </div>
+      { this.state.error && (
+        <div className="alert alert-warning">
+          { this.state.error }
+        </div>)
+      }
 
-        { this.state.error && (
-          <div className='alert alert-warning'>
-            { this.state.error }
-          </div>)
-        }
+      { this.state.explain && (
+        <pre className="text-success">
+          { this.state.explain }
+        </pre>)
+      }
+      <br />
 
-        { this.state.explain && (
-          <pre className='text-success'>
-            { this.state.explain }
-          </pre>)
-        }
-        <br/>
-
-        <ChartKindSelect chartKind={this.state.chartKind} onChange={this.handleChangeChartKind}/>
-        <DataRender columns={this.state.columns} data={this.state.data} kind={this.state.chartKind} height='400px'/>
-      </div>;
+      <ChartKindSelect chartKind={this.state.chartKind} onChange={this.handleChangeChartKind} />
+      <DataRender
+        columns={this.state.columns}
+        data={this.state.data}
+        kind={this.state.chartKind}
+        height="400px"
+      />
+    </div>)
   }
 }
 
-export default QueryEditor;
+QueryEditor.propTypes = {
+  sample: React.PropTypes.string,
+  chart_kind: React.PropTypes.string,
+  statement: React.PropTypes.string
+}
+
+QueryEditor.defaultProps = {
+  sample: '',
+  chart_kind: 'table',
+  statement: ''
+}
