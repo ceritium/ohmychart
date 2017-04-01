@@ -6,8 +6,8 @@ import 'brace/snippets/sql'
 import 'brace/snippets/text'
 import 'brace/ext/language_tools'
 import AceEditor from 'react-ace'
-import ChartRender from 'components/chart_render'
-import ChartKindSelect from 'components/chart_kind_select';
+import DataRender from 'components/data_render'
+import ChartKindSelect from 'components/chart_kind_select'
 
 class QueryEditor extends React.Component {
   constructor(props){
@@ -18,7 +18,7 @@ class QueryEditor extends React.Component {
       pendingPreview: true,
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind || 'column',
+      chartKind: this.props.chart_kind || 'table',
       pendingSave: false
     }
 
@@ -130,8 +130,9 @@ class QueryEditor extends React.Component {
           </pre>)
         }
         <br/>
+
         <ChartKindSelect chartKind={this.state.chartKind} onChange={this.handleChangeChartKind}/>
-        <ChartRender columns={this.state.columns} data={this.state.data} kind={this.state.chartKind} height='400px'/>
+        <DataRender columns={this.state.columns} data={this.state.data} kind={this.state.chartKind} height='400px'/>
       </div>;
   }
 }

@@ -8,6 +8,7 @@ export default class ChartKindSelect extends React.Component {
         Chart kind
       </label>
       <select name='query[chart_kind]' className='form-control' value={this.props.chartKind} onChange={this.props.onChange}>
+        <option value='table'> Table </option>
         <option value='column'> Column </option>
         <option value='bar'> Bar </option>
         <option value='line'> Line </option>

@@ -1,6 +1,6 @@
 import React from 'react'
 import $ from 'jquery'
-import ChartRender from 'components/chart_render'
+import DataRender from 'components/data_render'
 
 export default class ChartLoad extends React.Component {
 
@@ -24,7 +24,7 @@ export default class ChartLoad extends React.Component {
   render(){
     return <div>
     { this.state.data &&
-      <ChartRender columns={this.state.columns} data={this.state.data} kind={this.props.kind}/>
+      <DataRender columns={this.state.columns} data={this.state.data} kind={this.props.kind}/>
     }
     </div>
   }

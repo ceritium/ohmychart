@@ -1,7 +1,8 @@
 import React from 'react'
 import Chart from 'chart.js'
-
 import {ColumnChart, LineChart, AreaChart, PieChart, BarChart, ScatterChart} from 'react-chartkick'
+
+import TableRender from 'components/table_render'
 
 export default class ChartRender extends React.Component {
   chartData(){
@@ -44,7 +45,6 @@ export default class ChartRender extends React.Component {
     }
 
     const kind = (this.props.kind || 'column').toLowerCase()
-
     return React.createElement(chartKinds[kind]||ColumnChart, {data: this.chartData(), height: (this.props.height || '100%'), download: true})
   }
 
