@@ -10,6 +10,8 @@ module QueryRunner
 
   def columns_table(table)
     SOURCE[table].columns
+  rescue Sequel::DatabaseError => e
+    [e.message]
   end
 
   def execute(statement, options = {})
