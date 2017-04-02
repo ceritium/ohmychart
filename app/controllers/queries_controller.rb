@@ -1,4 +1,6 @@
 class QueriesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:preview]
+
   def index
     @queries = Query.page(params[:page])
   end
@@ -39,7 +41,7 @@ class QueriesController < ApplicationController
   end
 
   def preview
-    render json: QueryRunner.execute(params[:statement], params[:options].try(:to_unsafe_h))
+    render json: QueryRunner.execute(params[:statement], params[:sample].try(:to_unsafe_h))
   end
 
   private
