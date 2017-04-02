@@ -6,7 +6,7 @@
 - name: demo params and liquid
   statement: SELECT to_char(created_at, 'YYYY-MM') as date, sum(amount / 100.0) AS sum FROM items where status='{{status}}' GROUP BY date
   sample: status=paid
-  chart_kind: columns
+  chart_kind: column
 - name: status count
   statement: select status, count(*) as sum from items group by status
   chart_kind: pie
