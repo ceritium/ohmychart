@@ -8,6 +8,7 @@
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.2.0",
     "babel-preset-react": "^6.23.0",
+    "bootstrap": "^3.3.7",
     "brace": "^0.10.0",
     "chart.js": "^2.5.0",
     "chartkick": "^2.2.3",
