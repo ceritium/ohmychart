@@ -1,7 +1,8 @@
 {
   "scripts": {
     "lint": "eslint app/javascript config/webpack --ext .js,.jsx",
-    "lint:watcher": "nodemon -e js,jsx --exec yarn lint"
+    "lint:watcher": "nodemon -e js,jsx --exec yarn lint",
+    "test": "yarn lint"
   },
   "dependencies": {
     "babel-core": "^6.23.1",
