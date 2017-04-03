@@ -1,13 +1,13 @@
 #!/usr/bin/env ruby
-require 'shellwords'
+require "shellwords"
 
-ENV['RAILS_ENV'] ||= 'development'
-RAILS_ENV   = ENV['RAILS_ENV']
+ENV["RAILS_ENV"] ||= "development"
+RAILS_ENV = ENV["RAILS_ENV"]
 
-ENV['NODE_ENV'] ||= RAILS_ENV
-NODE_ENV    = ENV['NODE_ENV']
+ENV["NODE_ENV"] ||= RAILS_ENV
+NODE_ENV = ENV["NODE_ENV"]
 
-APP_PATH = File.expand_path('../', __dir__)
+APP_PATH = File.expand_path("../", __dir__)
 ESCAPED_APP_PATH = APP_PATH.shellescape
 
 SET_NODE_PATH  = "NODE_PATH=#{ESCAPED_APP_PATH}/node_modules"

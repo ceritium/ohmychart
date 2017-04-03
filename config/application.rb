@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -28,23 +28,22 @@ module Ohmychart
       g.helper          false
     end
 
-
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '/api/*', :headers => :any, :methods => [:get, :options]
+        origins "*"
+        resource "/api/*", headers: :any, methods: [:get, :options]
       end
     end
 
     # Max number of rows to return, is set the query is wrapped with:
     # `select * from ($query) limit $query_limit`
-    config.query_limit = ENV['QUERY_LIMIT']
+    config.query_limit = ENV["QUERY_LIMIT"]
 
     # Database source url, it is strongly recommend use a read-only user.
     #
     # Supported mysql2 and postgres connectors by default.
     # For any other connector supported by sequel probably you will have to modify the Gemfile
     # https://sequel.jeremyevans.net/rdoc/files/doc/opening_databases_rdoc.html
-    config.source_db = ENV['SOURCE_DB']
+    config.source_db = ENV["SOURCE_DB"]
   end
 end

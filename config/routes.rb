@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'queries#index'
+  root "queries#index"
   resource :charts, only: [:show]
   resources :queries do
     collection do
