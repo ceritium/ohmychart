@@ -1,4 +1,17 @@
 language: node_js
 node_js:
   - "node"
-cache: yarn
+cache:
+  - yarn
+  - vendor/bundle
+before_install:
+  - rvm install 2.4.0
+  - gem install bundler
+
+install:
+  - yarn install
+  - bundle install
+script:
+  - yarn test
+  - rubocop
+
