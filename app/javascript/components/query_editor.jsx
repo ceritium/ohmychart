@@ -15,22 +15,22 @@ export default class QueryEditor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sample: this.props.sample || '',
-      statement: this.props.statement || '',
-      pendingPreview: true,
+      sample: this.props.sample,
+      statement: this.props.statement,
       columns: [],
       data: [],
       chartKind: this.props.chart_kind,
       pendingSave: false
     }
 
+    this.handleRun = this.handleRun.bind(this)
     this.handleChangeStatement = this.handleChangeStatement.bind(this)
     this.handleChangeSample = this.handleChangeSample.bind(this)
     this.handleChangeChartKind = this.handleChangeChartKind.bind(this)
   }
 
   componentDidMount() {
-    setInterval(this.fetchPreview.bind(this), 1000)
+    this.fetchPreview()
     // window.onbeforeunload = this.askClose.bind(this)
   }
 
@@ -44,26 +44,27 @@ export default class QueryEditor extends React.Component {
     })
   }
 
+  handleRun(e) {
+    e.preventDefault()
+    this.fetchPreview()
+  }
+
   fetchPreview() {
-    if (this.state.pendingPreview) {
-      this.state.pendingPreview = false
+    const sample = {}
+    this.state.sample.split('&').forEach((pair) => {
+      const keyValue = pair.split('=')
+      sample[keyValue[0]] = keyValue[1]
+    })
 
-      const sample = {}
-      this.state.sample.split('&').forEach((pair) => {
-        const keyValue = pair.split('=')
-        sample[keyValue[0]] = keyValue[1]
-      })
-
-      $.ajax({
-        url: '/queries/preview',
-        method: 'POST',
-        data: {
-          statement: this.state.statement,
-          sample
-        },
-        success: this.onFetchSuccess.bind(this)
-      })
-    }
+    $.ajax({
+      url: '/queries/preview',
+      method: 'POST',
+      data: {
+        statement: this.state.statement,
+        sample
+      },
+      success: this.onFetchSuccess.bind(this)
+    })
   }
 
   handleChangeChartKind(e) {
@@ -71,11 +72,11 @@ export default class QueryEditor extends React.Component {
   }
 
   handleChangeSample(e) {
-    this.setState({ sample: e.target.value, pendingPreview: true, pendingSave: true })
+    this.setState({ sample: e.target.value, pendingSave: true })
   }
 
   handleChangeStatement(statement) {
-    this.setState({ statement, pendingPreview: true, pendingSave: true })
+    this.setState({ statement, pendingSave: true })
   }
 
   askClose() {
@@ -114,17 +115,26 @@ export default class QueryEditor extends React.Component {
         />
       </div>
 
-      <strong>
-        Sample
-      </strong>
-      <input
-        name="query[sample]"
-        type="text"
-        className="form-control"
-        autoComplete="off"
-        value={this.state.sample}
-        onChange={this.handleChangeSample}
-      />
+      <div className="row">
+        <div className="col-md-11">
+          <strong>
+            Sample
+          </strong>
+
+          <input
+            name="query[sample]"
+            type="text"
+            className="form-control"
+            autoComplete="off"
+            value={this.state.sample}
+            onChange={this.handleChangeSample}
+          />
+        </div>
+        <div className="col-md-1">
+          <br />
+          <button onClick={this.handleRun} className="btn btn-default"> RUN </button>
+        </div>
+      </div>
       <br />
       <div className="alert alert-info">
         { this.state.sql }
