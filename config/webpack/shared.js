@@ -26,6 +26,7 @@ const config = {
 
   module: {
     rules: [
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       { test: /\.coffee(\.erb)?$/, loader: 'coffee-loader' },
       {
         test: /\.jsx?(\.erb)?$/,
