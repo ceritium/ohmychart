@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import TableRender from './table_render'
 import ChartRender from './chart_render'
@@ -19,5 +20,5 @@ export default class DataRender extends React.Component {
 
 
 DataRender.propTypes = {
-  kind: React.PropTypes.string.isRequired,
+  kind: PropTypes.string.isRequired,
 }

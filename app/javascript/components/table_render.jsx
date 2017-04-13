@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class TableRender extends React.Component {
 
@@ -35,8 +36,8 @@ export default class TableRender extends React.Component {
 }
 
 TableRender.propTypes = {
-  data: React.PropTypes.optionalArray,
-  columns: React.PropTypes.optionalArray
+  data: PropTypes.optionalArray,
+  columns: PropTypes.optionalArray
 }
 
 TableRender.defaultProps = {

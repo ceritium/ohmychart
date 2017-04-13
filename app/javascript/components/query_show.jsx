@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ChartKindSelect from './chart_kind_select'
 
 export default class QueryShow extends React.Component {
@@ -79,12 +80,12 @@ export default class QueryShow extends React.Component {
 }
 
 QueryShow.propTypes = {
-  api_query_url: React.PropTypes.string.isRequired,
-  charts_url: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string,
-  sample: React.PropTypes.string,
-  statement: React.PropTypes.string,
-  chart_kind: React.PropTypes.string
+  api_query_url: PropTypes.string.isRequired,
+  charts_url: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  sample: PropTypes.string,
+  statement: PropTypes.string,
+  chart_kind: PropTypes.string
 }
 
 QueryShow.defaultProps = {

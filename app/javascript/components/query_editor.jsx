@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import 'brace'
 import 'brace/theme/twilight'
 import 'brace/mode/sql'
@@ -165,9 +167,9 @@ export default class QueryEditor extends React.Component {
 }
 
 QueryEditor.propTypes = {
-  sample: React.PropTypes.string,
-  chart_kind: React.PropTypes.string,
-  statement: React.PropTypes.string
+  sample: PropTypes.string,
+  chart_kind: PropTypes.string,
+  statement: PropTypes.string
 }
 
 QueryEditor.defaultProps = {

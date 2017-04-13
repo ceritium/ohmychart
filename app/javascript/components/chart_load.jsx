@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import $ from 'jquery'
 import DataRender from './data_render'
 
@@ -32,6 +33,6 @@ export default class ChartLoad extends React.Component {
 }
 
 ChartLoad.propTypes = {
-  kind: React.PropTypes.string.isRequired,
-  source: React.PropTypes.string.isRequired
+  kind: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired
 }

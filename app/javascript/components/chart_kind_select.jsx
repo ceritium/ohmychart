@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function ChartKindSelect(props) {
   return (<div>
@@ -24,6 +25,6 @@ export default function ChartKindSelect(props) {
 }
 
 ChartKindSelect.propTypes = {
-  chartKind: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired,
+  chartKind: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }

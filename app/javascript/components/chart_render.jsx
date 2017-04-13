@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import 'chart.js'
 import { ColumnChart, LineChart, AreaChart, PieChart, BarChart, ScatterChart } from 'react-chartkick'
 
@@ -47,10 +48,10 @@ export default class ChartRender extends React.Component {
 }
 
 ChartRender.propTypes = {
-  data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  columns: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-  kind: React.PropTypes.string,
-  height: React.PropTypes.string
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+  kind: PropTypes.string,
+  height: PropTypes.string
 }
 
 ChartRender.defaultProps = {
