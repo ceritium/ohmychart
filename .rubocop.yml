@@ -4,3 +4,4 @@ inherit_gem:
 AllCops:
   Exclude:
     - 'node_modules/**/*.rb'
+    - 'node_modules/**/*.spec'
