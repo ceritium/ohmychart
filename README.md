@@ -9,7 +9,7 @@ The proposal of this app is allow write queries against a database and expose em
 
 ## Warning
 
-I strongly recommend use a read-only user to connect to the database to avoid deletes, updates or inserts.
+ohmychart run all the queries in a transaction with auto rollback, but anyway I strongly recommend use a read-only user to connect to the database.
 
 ## Usage
 
@@ -24,4 +24,4 @@ I strongly recommend use a read-only user to connect to the database to avoid de
 - [ ] Access control as consumer
 - [ ] Add more view options
 - [ ] Save charts (query + view options)
-- [ ] Docker
+- [ ] Dockerfile for deploy on [Dokku](https://github.com/dokku/dokku)/Heroku
