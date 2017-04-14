@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import styles from './table_render.scss'
+
 export default class TableRender extends React.Component {
 
   renderRow(row) {
@@ -19,7 +21,7 @@ export default class TableRender extends React.Component {
     )
 
     return (
-      <table className="table">
+      <table className={styles.table}>
         <thead>
           <tr>
             { headList }

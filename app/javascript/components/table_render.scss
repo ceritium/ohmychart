@@ -1,0 +1,22 @@
+:local .table {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+
+  th {
+    border-top: 0;
+    border-bottom-width: 2px;
+    vertical-align: bottom;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+}
+
+

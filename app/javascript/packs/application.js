@@ -11,4 +11,4 @@ import WebpackerReact from 'webpacker-react'
 import QueryShow from '../components/query_show'
 import QueryEditor from '../components/query_editor'
 
-WebpackerReact.setup({QueryShow, QueryEditor})
+WebpackerReact.setup({ QueryShow, QueryEditor })
