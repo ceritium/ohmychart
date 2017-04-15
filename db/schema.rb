@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314221033) do
+ActiveRecord::Schema.define(version: 20170415204431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20170314221033) do
   create_table "queries", force: :cascade do |t|
     t.string   "name"
     t.text     "statement"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "sample"
     t.string   "chart_kind"
+    t.boolean  "chart_stacked", default: false
   end
 
 end

@@ -26,7 +26,12 @@ export default class ChartLoad extends React.Component {
     return (
       <div>
         { this.state.data &&
-          <DataRender columns={this.state.columns} data={this.state.data} kind={this.props.kind} />
+          <DataRender
+            columns={this.state.columns}
+            data={this.state.data}
+            kind={this.props.kind}
+            stacked={this.props.stacked === 'true'}
+          />
         }
       </div>)
   }
@@ -34,5 +39,10 @@ export default class ChartLoad extends React.Component {
 
 ChartLoad.propTypes = {
   kind: PropTypes.string.isRequired,
+  stacked: PropTypes.string,
   source: PropTypes.string.isRequired
+}
+
+ChartLoad.defaultProps = {
+  stacked: false
 }
