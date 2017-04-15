@@ -11,7 +11,7 @@ import AceEditor from 'react-ace'
 import $ from 'jquery'
 
 import DataRender from './data_render'
-import ChartKindSelect from './chart_kind_select'
+import ChartOptions from './chart_options'
 
 export default class QueryEditor extends React.Component {
   constructor(props) {
@@ -22,6 +22,7 @@ export default class QueryEditor extends React.Component {
       columns: [],
       data: [],
       chartKind: this.props.chart_kind,
+      chartStacked: this.props.chart_stacked,
       pendingSave: false
     }
 
@@ -29,6 +30,7 @@ export default class QueryEditor extends React.Component {
     this.handleChangeStatement = this.handleChangeStatement.bind(this)
     this.handleChangeSample = this.handleChangeSample.bind(this)
     this.handleChangeChartKind = this.handleChangeChartKind.bind(this)
+    this.handleChangeChartStacked = this.handleChangeChartStacked.bind(this)
   }
 
   componentDidMount() {
@@ -71,6 +73,10 @@ export default class QueryEditor extends React.Component {
 
   handleChangeChartKind(e) {
     this.setState({ chartKind: e.target.value, pendingSave: true })
+  }
+
+  handleChangeChartStacked(e) {
+    this.setState({ chartStacked: e.target.checked })
   }
 
   handleChangeSample(e) {
@@ -155,11 +161,18 @@ export default class QueryEditor extends React.Component {
       }
       <br />
 
-      <ChartKindSelect chartKind={this.state.chartKind} onChange={this.handleChangeChartKind} />
+      <ChartOptions
+        chartStacked={this.state.chartStacked}
+        chartKind={this.state.chartKind}
+        onChangeChartKind={this.handleChangeChartKind}
+        onChangeChartStacked={this.handleChangeChartStacked}
+      />
+
       <DataRender
         columns={this.state.columns}
         data={this.state.data}
         kind={this.state.chartKind}
+        stacked={this.state.chartStacked}
         height="400px"
       />
     </div>)
@@ -169,11 +182,13 @@ export default class QueryEditor extends React.Component {
 QueryEditor.propTypes = {
   sample: PropTypes.string,
   chart_kind: PropTypes.string,
+  chart_stacked: PropTypes.bool,
   statement: PropTypes.string
 }
 
 QueryEditor.defaultProps = {
   sample: '',
   chart_kind: 'table',
+  chart_stacked: false,
   statement: ''
 }

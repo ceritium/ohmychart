@@ -42,7 +42,7 @@ export default class ChartRender extends React.Component {
 
     const kind = this.props.kind.toLowerCase()
     return React.createElement(chartKinds[kind] || ColumnChart, {
-      data: this.chartData(), height: this.props.height
+      data: this.chartData(), height: this.props.height, stacked: this.props.stacked
     })
   }
 }
@@ -51,10 +51,12 @@ ChartRender.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   columns: PropTypes.arrayOf(PropTypes.string).isRequired,
   kind: PropTypes.string,
+  stacked: PropTypes.bool,
   height: PropTypes.string
 }
 
 ChartRender.defaultProps = {
   height: '100%',
   kind: 'column',
+  stacked: false
 }
