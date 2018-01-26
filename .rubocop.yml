@@ -3,5 +3,4 @@ inherit_gem:
     - config/rails.yml
 AllCops:
   Exclude:
-    - 'node_modules/**/*.rb'
-    - 'node_modules/**/*.spec'
+    - "node_modules/**/*"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module QueryRunner
   SOURCE = Sequel.connect(Rails.configuration.source_db, loggers: [Rails.logger])
 

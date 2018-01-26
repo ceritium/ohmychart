@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :ohmychart do
   desc "Delete current queries and load demo data"
   task demo: :environment do

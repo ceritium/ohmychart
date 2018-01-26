@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module QueriesHelper
   def query_react_props(query)
     props = query.as_json
