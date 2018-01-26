@@ -13,16 +13,17 @@ import $ from 'jquery'
 import DataRender from './data_render'
 import ChartOptions from './chart_options'
 
-export default class QueryEditor extends React.Component {
+class QueryEditor extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
-      sample: this.props.sample || "",
-      statement: this.props.statement || "",
+      sample: this.props.sample,
+      statement: this.props.statement,
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind || "table",
-      chartStacked: this.props.chart_stacked || true,
+      chartKind: this.props.chart_kind,
+      chartStacked: this.props.chart_stacked,
       pendingSave: false
     }
 
@@ -185,3 +186,12 @@ QueryEditor.propTypes = {
   chart_stacked: PropTypes.bool,
   statement: PropTypes.string
 }
+
+QueryEditor.defaultProps = {
+  sample: '',
+  chart_kind: 'table',
+  chart_stacked: false,
+  statement: ''
+}
+
+export default QueryEditor
