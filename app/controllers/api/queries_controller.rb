@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::QueriesController < ApplicationController
   def show
     @query = Query.find(params[:id])

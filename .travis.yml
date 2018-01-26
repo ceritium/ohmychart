@@ -13,5 +13,5 @@ install:
   - bundle install
 script:
   - yarn test
-  - rubocop
+  - bundle exec rubocop
 
