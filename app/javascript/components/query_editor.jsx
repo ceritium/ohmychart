@@ -17,12 +17,12 @@ export default class QueryEditor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sample: this.props.sample,
-      statement: this.props.statement,
+      sample: this.props.sample || "",
+      statement: this.props.statement || "",
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind,
-      chartStacked: this.props.chart_stacked,
+      chartKind: this.props.chart_kind || "table",
+      chartStacked: this.props.chart_stacked || true,
       pendingSave: false
     }
 
@@ -184,11 +184,4 @@ QueryEditor.propTypes = {
   chart_kind: PropTypes.string,
   chart_stacked: PropTypes.bool,
   statement: PropTypes.string
-}
-
-QueryEditor.defaultProps = {
-  sample: '',
-  chart_kind: 'table',
-  chart_stacked: false,
-  statement: ''
 }
