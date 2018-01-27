@@ -18,6 +18,7 @@
     "coffee-loader": "^0.7.3",
     "coffee-script": "^1.12.5",
     "compression-webpack-plugin": "^0.4.0",
+    "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "glob": "^7.1.1",
@@ -36,6 +37,7 @@
     "react-dom": "^16.2.0",
     "sass-loader": "^6.0.3",
     "standard-loader": "^6.0.1",
+    "style-loader": "^0.20.1",
     "webpack": "3.4.1",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-merge": "^4.1.0",
@@ -43,14 +45,12 @@
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "css-loader": "^0.28.9",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-compat": "^1.0.2",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "style-loader": "^0.16.1",
     "webpack-dev-server": "^2.11.1"
   }
 }

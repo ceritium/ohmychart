@@ -124,7 +124,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
-    minitest (5.11.3)
+    minitest (5.10.1)
     multi_json (1.13.1)
     mysql2 (0.4.5)
     nenv (0.3.0)
@@ -251,6 +251,7 @@ DEPENDENCIES
   kaminari
   liquid
   listen (~> 3.0.5)
+  minitest (= 5.10.1)
   mysql2
   pg (~> 0.18)
   pry-byebug
