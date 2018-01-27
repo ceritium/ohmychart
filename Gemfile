@@ -22,8 +22,8 @@ gem "uglifier", ">= 1.3.0"
 # Use CoffeeScript for .coffee assets and views
 gem "coffee-rails", "~> 4.2"
 
-gem "webpacker", github: "rails/webpacker"
-gem "webpacker-react", "~> 0.2.0"
+gem "webpacker"
+gem "react-rails"
 
 gem "simple_form"
 gem "kaminari"

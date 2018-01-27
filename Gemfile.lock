@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/rails/webpacker.git
-  revision: 814cabae36da6ec5b55291e7b55db08ad8e6b839
-  specs:
-    webpacker (1.1)
-      activesupport (>= 4.2)
-      multi_json (~> 1.2)
-      railties (>= 4.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -49,6 +40,10 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     ast (2.3.0)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     builder (3.2.3)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -60,6 +55,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
+    crass (1.0.3)
     dotenv (2.2.0)
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
@@ -91,7 +88,8 @@ GEM
       activesupport (>= 4.0.1)
       hamlit (>= 1.2.0)
       railties (>= 4.0.1)
-    i18n (0.8.1)
+    i18n (0.9.3)
+      concurrent-ruby (~> 1.0)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
@@ -115,7 +113,8 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.0.3)
+    loofah (2.1.1)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.11)
     mail (2.6.4)
@@ -124,14 +123,14 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
-    minitest (5.10.1)
-    multi_json (1.12.1)
+    mini_portile2 (2.3.0)
+    minitest (5.11.3)
+    multi_json (1.13.1)
     mysql2 (0.4.5)
     nenv (0.3.0)
     nio4r (2.0.0)
-    nokogiri (1.7.1)
-      mini_portile2 (~> 2.1.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -147,8 +146,10 @@ GEM
       byebug (~> 9.0)
       pry (~> 0.10)
     puma (3.8.1)
-    rack (2.0.1)
+    rack (2.0.3)
     rack-cors (0.4.1)
+    rack-proxy (0.6.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -163,9 +164,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.2)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.0.2)
-      activesupport (>= 4.2.0, < 6.0)
-      nokogiri (~> 1.6)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails-pry (0.0.1)
@@ -176,10 +177,16 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.2.1)
-    rake (12.0.0)
+    rake (12.3.0)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    react-rails (2.4.3)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     rubocop (0.48.1)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
@@ -210,19 +217,21 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     temple (0.8.0)
-    thor (0.19.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.6)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
-    tzinfo (1.2.3)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (3.1.6)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.3)
-    webpacker-react (0.2.0)
-      webpacker
+    webpacker (3.2.1)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -249,6 +258,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.2)
   rails-pry
+  react-rails
   rubocop-rails
   sass-rails (~> 5.0)
   sequel
@@ -256,11 +266,10 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
-  webpacker!
-  webpacker-react (~> 0.2.0)
+  webpacker
 
 RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.6
+   1.16.1

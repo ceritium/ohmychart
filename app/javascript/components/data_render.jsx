@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import TableRender from './table_render'
+// eslint-disable-next-line import/extensions
+import TableRender from './table_render.jsx'
 import ChartRender from './chart_render'
 
 export default class DataRender extends React.Component {

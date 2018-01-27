@@ -3,7 +3,7 @@ node_js:
   - "node"
 cache:
   - yarn
-  - vendor/bundle
+  - bundler
 before_install:
   - rvm install 2.4.0
   - gem install bundler
