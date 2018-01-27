@@ -1,6 +1,8 @@
 # README
 
 [![Build Status](https://travis-ci.org/ceritium/ohmychart.svg?branch=master)](https://travis-ci.org/ceritium/ohmychart)
+[![Dependency Status](https://gemnasium.com/badges/github.com/ceritium/ohmychart.svg)](https://gemnasium.com/github.com/ceritium/ohmychart)
+
 
 The proposal of this app is allow write queries against a database and expose embeddable charts and json apis.
 
