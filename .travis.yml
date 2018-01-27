@@ -16,4 +16,9 @@ install:
   - bundle install
 script:
   - yarn test
+  - bundle exec rake assets:precompile
+  - bundle exec rake db:create db:schema:load db:test:prepare
+  - bundle exec rake test
   - bundle exec rubocop
+notifications:
+  email: false
