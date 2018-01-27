@@ -8,7 +8,7 @@ cache:
     - node_modules
     - /home/travis/.rvm/
 before_install:
-  - rvm install 2.4.0
+  - rvm install 2.5.0
   - gem install bundler
 
 install:
