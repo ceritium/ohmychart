@@ -22,8 +22,8 @@ class QueryEditor extends React.Component {
       statement: this.props.statement,
       columns: [],
       data: [],
-      chartKind: this.props.chart_kind,
-      chartStacked: this.props.chart_stacked,
+      chartKind: this.props.chartKind,
+      chartStacked: this.props.chartStacked,
       pendingSave: false
     }
 
@@ -182,15 +182,15 @@ class QueryEditor extends React.Component {
 
 QueryEditor.propTypes = {
   sample: PropTypes.string,
-  chart_kind: PropTypes.string,
-  chart_stacked: PropTypes.bool,
+  chartKind: PropTypes.string,
+  chartStacked: PropTypes.bool,
   statement: PropTypes.string
 }
 
 QueryEditor.defaultProps = {
   sample: '',
-  chart_kind: 'table',
-  chart_stacked: false,
+  chartKind: 'table',
+  chartStacked: false,
   statement: ''
 }
 
