@@ -19,3 +19,9 @@
 /public/packs
 /node_modules
 vendor/assets/bower_components
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
