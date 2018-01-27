@@ -6,8 +6,8 @@ export default class QueryShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      chartKind: this.props.chart_kind,
-      chartStacked: this.props.chart_stacked,
+      chartKind: this.props.chartKind,
+      chartStacked: this.props.chartStacked,
       sample: this.props.sample
     }
 
@@ -31,8 +31,8 @@ export default class QueryShow extends React.Component {
   render() {
     const iframeWidth = '100%'
     const iframeHeight = '200px'
-    const jsonURL = `${this.props.api_query_url}?${this.state.sample}`
-    const chartURL = `${this.props.charts_url}?source=${encodeURIComponent(jsonURL)}&kind=${this.state.chartKind}&stacked=${this.state.chartStacked}`
+    const jsonURL = `${this.props.apiQueryUrl}?${this.state.sample}`
+    const chartURL = `${this.props.chartsUrl}?source=${encodeURIComponent(jsonURL)}&kind=${this.state.chartKind}&stacked=${this.state.chartStacked}`
     const iframeCode = `<iframe src='${chartURL}' width='${iframeWidth}' height='${iframeHeight}' border='none'></iframe>`
     return (
       <div>
@@ -93,19 +93,19 @@ export default class QueryShow extends React.Component {
 }
 
 QueryShow.propTypes = {
-  api_query_url: PropTypes.string.isRequired,
-  charts_url: PropTypes.string.isRequired,
+  apiQueryUrl: PropTypes.string.isRequired,
+  chartsUrl: PropTypes.string.isRequired,
   name: PropTypes.string,
   sample: PropTypes.string,
   statement: PropTypes.string,
-  chart_kind: PropTypes.string,
-  chart_stacked: PropTypes.bool
+  chartKind: PropTypes.string,
+  chartStacked: PropTypes.bool
 }
 
 QueryShow.defaultProps = {
   name: '',
   sample: '',
   statement: '',
-  chart_kind: 'table',
-  chart_stacked: false
+  chartKind: 'table',
+  chartStacked: false
 }

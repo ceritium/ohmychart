@@ -47,5 +47,7 @@ module Ohmychart
     # For any other connector supported by sequel probably you will have to modify the Gemfile
     # https://sequel.jeremyevans.net/rdoc/files/doc/opening_databases_rdoc.html
     config.source_db = ENV["SOURCE_DB"]
+
+    config.react.camelize_props = true
   end
 end
