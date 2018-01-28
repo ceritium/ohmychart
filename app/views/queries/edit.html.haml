@@ -9,9 +9,7 @@
   %br
   %br
   .row
-    .col-md-9
-      = f.input :name
-      = react_component('QueryEditor', query_react_props(@query))
+    = react_component('QueryEditor', query_react_props(@query))
     .col-md-3
       .panel.panel-default
         .panel-heading
