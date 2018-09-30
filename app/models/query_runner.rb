@@ -20,7 +20,6 @@ module QueryRunner
     template = Liquid::Template.parse(statement)
     sql = template.render(options.select { |k, v| v.present? })
     SOURCE.transaction(rollback: :always) do
-
       fetch = SOURCE.fetch(sql)
 
       if limit = Rails.configuration.query_limit
