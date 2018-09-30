@@ -55,7 +55,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
+    connection_pool (2.2.2)
     crass (1.0.4)
     dotenv (2.2.1)
     dotenv-rails (2.2.1)
@@ -180,7 +180,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react-rails (2.4.3)
+    react-rails (2.4.7)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
