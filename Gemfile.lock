@@ -123,7 +123,7 @@ GEM
     method_source (0.9.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.1)
+    minitest (5.11.3)
     multi_json (1.13.1)
     mysql2 (0.5.2)
     nenv (0.3.0)
@@ -256,7 +256,7 @@ DEPENDENCIES
   kaminari
   liquid
   listen (~> 3.0.5)
-  minitest (= 5.10.1)
+  minitest (= 5.11.3)
   mysql2
   pg (~> 0.18)
   pry-byebug

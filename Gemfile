@@ -67,7 +67,7 @@ group :development do
 end
 
 group :test do
-  gem "minitest", "5.10.1"
+  gem "minitest", "5.11.3"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
