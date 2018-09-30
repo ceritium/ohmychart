@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   root "queries#index"
   resource :charts, only: [:show]
   resources :queries do

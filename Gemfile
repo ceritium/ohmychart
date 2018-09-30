@@ -51,7 +51,7 @@ gem "jbuilder", "~> 2.5"
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem "rubocop-rails"
+  gem "rubocop-rails_config"
 
   gem "rails-pry"
   gem "pry-byebug"
