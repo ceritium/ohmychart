@@ -40,7 +40,7 @@
     "style-loader": "^0.20.1",
     "webpack": "3.4.1",
     "webpack-manifest-plugin": "^1.1.0",
-    "webpack-merge": "^4.1.0",
+    "webpack-merge": "^4.1.4",
     "webpacker-react": "^0.2.1"
   },
   "devDependencies": {
