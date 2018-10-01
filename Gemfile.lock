@@ -115,9 +115,10 @@ GEM
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
     liquid (4.0.0)
-    listen (3.0.8)
+    listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -185,7 +186,7 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (12.3.1)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     react-rails (2.4.7)
@@ -206,6 +207,7 @@ GEM
       railties (>= 3.0)
       rubocop (~> 0.56)
     ruby-progressbar (1.10.0)
+    ruby_dep (1.5.0)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -263,7 +265,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   liquid
-  listen (~> 3.0.5)
+  listen (~> 3.1.5)
   minitest (= 5.11.3)
   mysql2
   pg (~> 0.18)

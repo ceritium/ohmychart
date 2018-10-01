@@ -61,7 +61,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "listen", "~> 3.0.5"
+  gem "listen", "~> 3.1.5"
   gem "guard"
   gem "guard-rubocop"
 end
