@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: onjin/alpine-postgres
+    restart: always
+    volumes:
+      - 'pg:/var/lib/postgresql/data'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ''
+      PGDATA: '/var/lib/postgresql/data'
+    ports:
+      - "5433:5432"
+volumes:
+  pg:
