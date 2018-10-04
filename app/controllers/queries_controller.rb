@@ -25,6 +25,9 @@ class QueriesController < ApplicationController
 
   def edit
     find_query
+    @query.chart_kind ||= "column"
+    @query.sample ||= ""
+    @query.statement ||= ""
   end
 
   def update
