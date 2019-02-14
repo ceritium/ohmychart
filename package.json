@@ -29,7 +29,7 @@
     "postcss-plugin": "^1.0.0",
     "postcss-smart-import": "^0.7.6",
     "precss": "^1.4.0",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.7.2",
     "rails-erb-loader": "^5.0.0",
     "react": "^16.2.0",
     "react-ace": "^4.2.1",
