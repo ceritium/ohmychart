@@ -52,6 +52,6 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^3.9.0"
   }
 }
