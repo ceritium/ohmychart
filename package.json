@@ -11,7 +11,7 @@
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.3.3",
     "babel-preset-react": "^6.24.1",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.4.1",
     "brace": "^0.10.0",
     "chart.js": "^2.5.0",
     "chartkick": "^2.2.3",
