@@ -22,7 +22,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "glob": "^7.1.1",
-    "jquery": "^3.1.1",
+    "jquery": "^3.5.0",
     "js-yaml": "^3.8.3",
     "node-sass": "^4.5.2",
     "path-complete-extname": "^0.1.0",
